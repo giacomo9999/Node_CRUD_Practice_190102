@@ -4,6 +4,9 @@ const app = express();
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config({ path: "variables.env" });
 
+
+let db;
+
 MongoClient.connect(
   process.env.DATABASE,
   { useNewUrlParser: true },
@@ -11,7 +14,7 @@ MongoClient.connect(
     if (err) return console.log(err);
     db = client.db("node_crud_190102");
     app.listen(3000, () => {
-      console.log("Listening on 3000");
+      console.log("Listening on 3000, yo");
     });
   }
 );
@@ -27,7 +30,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/quotes", (req, res) => {
-  console.log(req.body);
-  console.log("I am filled with animal lusts.");
-  res.send("test.");
+  db.collection("quotes").save(req.body, (err, result) => {
+    if (err) return console.log(err);
+    console.log("Saved to Database.");
+    res.redirect("/");
+  });
 });
