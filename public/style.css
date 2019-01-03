@@ -1,0 +1,17 @@
+body {
+  margin: 20px;
+  font-family: "Merriweather", serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.quotes {
+  margin: 10 auto;
+  text-align: left;
+}
+
+.italic {
+  font-style: italic;
+}
