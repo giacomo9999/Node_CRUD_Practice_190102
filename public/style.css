@@ -3,6 +3,10 @@ body {
   font-family: "Merriweather", serif;
 }
 
+h4 {
+  display: inline-block;
+}
+
 ul {
   list-style-type: none;
 }
