@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Jim App</title>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-    <link rel='stylesheet' href='/style.css' />
-</head>
-<body>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather" />
+  <link rel='stylesheet' href='/style.css' />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Merriweather", serif;
+    }
+    .w3-bar,
+    h1,
+    button {
+      font-family: "Merriweather", serif;
+    }
+    .fa-anchor,
+    .fa-coffee {
+      font-size: 200px;
+    }
+  </style>
+  <body>
+    
 
-    <h1>Minimalist Quote App</h1>
+    <!-- Header -->
+    <header class="w3-container w3-indigo w3-center" style="padding:10px 16px">
+      <h2 class="w3-margin w3-xxlarge">Minimalist Quote App</h2>
+    </header>
 
-    <ul class="quotes">
-        <% for(let i=0; i<quotes.length; i++) {%>
-            <li class="quote">
-                <span><%= quotes[i].name %> --</span>
-                <span class='italic'>"<%= quotes[i].quote %>"</span>
-            </li>
-        <%}%>
-    </ul>
+    <!-- First Grid -->
+    <div class=" w3-center w3-container">
+      <div class="w3-content">
+      <ul class="quotes">
+      <% for(let i=0; i<quotes.length; i++) {%>
+          <li class="quote">
+              <span><%= quotes[i].name %> --</span>
+              <span class='italic'>"<%= quotes[i].quote %>"</span>
+          </li>
+      <%}%>
+  </ul>
 
+  <div>
+  
     <form action="/quotes" method="POST">
+        <h4 class="w3-margin .w3-medium">Add A New Quote</h4>
         <input type="text" placeholder="name" name="name" />
         <input type="text" placeholder="quote" name="quote" />
         <button type="submit">Submit</button>
     </form>
 
     <div>
-        <h4>Replace a Jim quote</h4>
+        <h4 class="w3-margin .w3-medium" >Delete a Jim quote</h4>
+        <button id="delete">Delete it!</button>
+        <br>
+        <h4 class="w3-margin .w3-medium">Replace a Jim quote</h4>
         <button id="update">Replace it!</button>
+     </div>
+
+  </div>
+
+  <script src="main.js"></script>
+
+      </div>
     </div>
 
-    <script src="main.js"></script>
-
-</body>
+    
+  </body>
 </html>
-
-
