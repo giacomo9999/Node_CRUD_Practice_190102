@@ -23,14 +23,6 @@ app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
 
-// app.listen(3000, function() {
-//   console.log("Listening on Port 3000.");
-// });
-
-// app.get("/", (req, res) => {
-//   res.sendFile(__dirname + "/index.html");
-// });
-
 app.get("/", (req, res) => {
   db.collection("quotes")
     .find()
@@ -51,13 +43,13 @@ app.post("/quotes", (req, res) => {
 
 app.put("/quotes", (req, res) => {
   db.collection("quotes").findOneAndUpdate(
-    { name: "Darth Vader" },
+    { name: "Jim" },
     {
       $set: { name: req.body.name, quote: req.body.quote }
     },
     {
       sort: { _id: -1 },
-      upsert: true
+      upsert: false
     },
     (err, result) => {
       if (err) return res.send(err);
@@ -65,3 +57,14 @@ app.put("/quotes", (req, res) => {
     }
   );
 });
+
+app.delete("/quotes", (req, res) => {
+  db.collection("quotes").findOneAndDelete(
+    { name: req.body.name },
+    (err, result) => {
+      if (err) return res.send(500, err);
+      res.send({message:"A Jim quote has been deleted."});
+    }
+  );
+});
+
